@@ -124,7 +124,7 @@ exports.loginFriend = function(req,res){
         username:req.body.username,
         password:req.body.password
     }
-    console.log('username: ' + searchObjectusername);
+    console.log('username: ' + searchObject.username);
     
     db.Friends.find(searchObject,function(err,data){
         

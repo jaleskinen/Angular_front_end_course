@@ -1,49 +1,48 @@
 /*use element selector to select all p elements for this style*/
 p{
-    
-    color: greenyellow;
-    font-size: 32px;
+    color: red;
+    font-size: 22px;
 }
 
-/*Use class selector to define style for elements*/
-.mun_keksima{
-    
-    background-color: aquamarine;
+h3{   
+    text-align: center;
+    text-decoration: underline;
 }
 
-.fancy{
-    
-    color: black;
-    border: 2px;
-    background-color: red;
-    border-radius: 8px;
+h2{   
+    text-decoration: underline;  
 }
 
-/*Use id selector to define style*/
-#joku_tyyli{
-    
-    margin: 100px;
+.body_container
+{
+    font-size: 12px;
+    color: blue;
+    margin: 8px auto;
+    /*border-radius: 25px;*/
+    background: linear-gradient(to right, rgba(0,0,255,0.2), rgba(0,0,255,0.5));
+    padding: 20px;
 }
 
 .login_container{
     
     width: 500px;
-    margin: 8px auto;
+    margin: 18px auto;
     border: 2px solid black;
-    border-radius: 5px;
-    background-color: darksalmon;
+    border-radius: 10px;
+    background: linear-gradient(to right, rgba(0,0,255,0.2), rgba(0,0,255,0.5));
     padding: 8px;
 }
 
+/* The starting CSS styles for the fading class animation */
+.fading.ng-enter {
+    transition: 2s;
+    opacity:0;
+}
 
-
-
-
-
-
-
-
-
+/* The finishing CSS styles for the fading class animation */
+.fading.ng-enter.ng-enter-active {
+    opacity:1;
+}
 
 
 

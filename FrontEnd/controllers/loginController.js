@@ -31,6 +31,7 @@ main_module.controller('controllerLogin', function ($scope, loginFactory, $locat
         }, function error(data) {
             console.log('Login Error');
             $('.error').text('Wrong username or password!');
+            console.log('bool: ' + $scope.bool);
         });
     };
     
@@ -50,8 +51,8 @@ main_module.controller('controllerLogin', function ($scope, loginFactory, $locat
                 console.log('Register status was ok');
                 alert('Register OK');
             } else {
-                console.log('Login status was NOT ok');
-                alert('Wrong username or password');
+                console.log('Register status was NOT ok');
+                $('.error').text('Registration failed!');
             }
             
         }, function error(data) {
