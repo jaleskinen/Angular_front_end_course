@@ -1,14 +1,15 @@
 
 <!--<p class="error"></p>-->
 
-<div class=login_container>
-    <h3>Login or Register to Angular App!</h3>
+<div class="loginbody_container">
+    <h1 class="pagetitle">Login or Register to Angular App!</h1>
     <form>
         <!--ng-model directive is the way to tarnsfer data to controller -->
-        <input type="text" placeholder="username" class="form-control" ng-model="user"><br/>
-        <input type="password" placeholder="password" class="form-control" ng-model='pass'><br/>
+        <input type="text" placeholder="username" class="form-control" ng-model="user">
+        <input type="password" placeholder="password" class="form-control" ng-model='pass'>
         <input type="button" value="Login" class="btn btn-default" ng-click='loginClicked(); bool=true'>
         <input type="button" value="Register" class="btn btn-default" ng-click='registerClicked(); bool=true' >
+
         <!--bind the data from username textfield (use the variable 'user')-->
     <!--    <p>{{user}}</p>-->
     </form>

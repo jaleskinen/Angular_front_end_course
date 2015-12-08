@@ -6,6 +6,7 @@ main_module.factory('loginFactory', function ($resource) {
     factory.startLogin = function (data) {
         
         console.log('startLogin: ' + data.username);
+        localStorage.username = data.username;
         //Create resource for context "/friends/login", empty object {} includes options
         var req = $resource('/friends/login', {}, {'post': {method: 'POST'}});
         //Use POST method to send the username and password to above context

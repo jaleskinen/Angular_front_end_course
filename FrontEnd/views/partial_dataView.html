@@ -1,35 +1,30 @@
 <div class="loginbody_container">
-    <nav id="head"></nav>
-    <section>
-        <div>
-            <h1 class="about">Angular - {{loginPerson}}</h1>
-            <div class="col-md-4">
-                <input type="text" class="form-control" style = "width:250px" placeholder="Search by Name" ng-model="search"/><br>
-                <input type="button" class="btn btn-default" value="Search" ng-click='searchClicked()'/>
-                <input type="button" class="btn btn-default" value="Show all" ng-click='showAllClicked()'/><br>
-            </div>
+      
+    <h1 class="pagetitle">Angular - {{loginPerson}}</h1>
 
-                <table class="table">
-                <thead>
-                  <tr>
-                    <th>Name</th>
-                    <th>Address</th>
-                    <th>Age</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr ng-repeat="person in friendData">
-                    <td>{{person.name}}</td>
-                    <td>{{person.address}}</td>
-                    <td>{{person.age}}</td>
-                    <td><input type='button' class="btn btn-default btn-sm" value='Modify' ng-click='modifyClicked($index)'/></td>
-                  </tr>
-                </tbody>
-              </table>
-            <form>
-                <input type="button" class="btn btn-default" value="Add Person" ng-click='addPersonClicked()'>
-                <input type="button" class="btn btn-default" value="Log out" onclick="window.location.href='/'"/>
-            </form> 
-        </div>
-    </section>
+    <table class="table table-bordered table-hover">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Address</th>
+            <th>Age</th>
+            <th>Modify</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="person in friendData">
+            <td>{{person.name}}</td>
+            <td>{{person.address}}</td>
+            <td>{{person.age}}</td>
+            <td><input type='button' class="btn btn-default btn-sm" value='Modify' ng-click='modifyClicked($index)'/></td>
+          </tr>
+        </tbody>
+    </table>
+    
+    <input type="text" class="form-control" style = "width:250px" placeholder="Search by Name" ng-model="search"/>
+    <input type="button" class="btn btn-default" value="Search" ng-click='searchClicked()'/>
+    <input type="button" class="btn btn-default" value="Show all" ng-click='showAllClicked()'/><br><br>
+    <input type="button" class="btn btn-default" value="Add Person" ng-click='addPersonClicked()'>
+    <a href="/logout" class="btn btn-default">Logout</a>
+
 </div>
