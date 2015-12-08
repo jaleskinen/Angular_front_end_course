@@ -35,7 +35,7 @@ h2{
 
 /* The starting CSS styles for the fading class animation */
 .fading.ng-enter {
-    transition: 2s;
+    transition: 3s;
     opacity:0;
 }
 

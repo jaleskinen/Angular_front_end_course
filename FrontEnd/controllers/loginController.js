@@ -28,9 +28,9 @@ main_module.controller('controllerLogin', function ($scope, loginFactory, $locat
             //from server receives
             $location.path('/list');
             
-        }, function error(data) {
+        }, function (data) {
             console.log('Login Error');
-            $('.error').text('Wrong username or password!');
+            $('.status').text('Wrong username or password!');
             console.log('bool: ' + $scope.bool);
         });
     };
@@ -46,18 +46,13 @@ main_module.controller('controllerLogin', function ($scope, loginFactory, $locat
         var waitPromise = loginFactory.startRegister(temp);
         
         //wait the response from server
-        waitPromise.then(function (data) {
-            if (data.status === "Ok") {
-                console.log('Register status was ok');
-                alert('Register OK');
-            } else {
-                console.log('Register status was NOT ok');
-                $('.error').text('Registration failed!');
-            }
+        waitPromise.then(function succ(data) {
+            console.log('Register status was ok');
+            $('.status').text('Registration OK!');
             
-        }, function error(data) {
-            console.log('Register Error');
-            $('.error').text('Register Error!');
+        }, function err(data) {
+            console.log('Register Error:' + data.status);
+            $('.status').text('Registration Error!');
         });
     };
 });

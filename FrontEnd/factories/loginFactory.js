@@ -6,8 +6,8 @@ main_module.factory('loginFactory', function ($resource) {
     factory.startLogin = function (data) {
         
         console.log('startLogin: ' + data.username);
-        //Create resource for context "/friends/login"
-        var req = $resource('/friends/login', {}, {'post':{method: 'POST'}});
+        //Create resource for context "/friends/login", empty object {} includes options
+        var req = $resource('/friends/login', {}, {'post': {method: 'POST'}});
         //Use POST method to send the username and password to above context
         //Note that we return an promise object from here
         return req.post(data).$promise;
@@ -18,8 +18,8 @@ main_module.factory('loginFactory', function ($resource) {
     factory.startRegister = function (data) {
         
         console.log('startRegister: ' + data.username);
-        //Create resource for context "/friends/login"
-        var req = $resource('/friends/register', {}, {'post':{method: 'POST'}});
+        //Create resource for context "/friends/register"
+        var req = $resource('/friends/register', {}, {'post': {method: 'POST'}});
         //Use POST method to send the username and password to above context
         //Note that we return an promise object from here
         return req.post(data).$promise;
