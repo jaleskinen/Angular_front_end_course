@@ -28,16 +28,19 @@ exports.saveNewPerson = function(req,res){
     
     var personTemp = new db.Person(req.body);
     //Save it to database
-    personTemp.save(function(err,ok){
+    personTemp.save(function(err,newData){
         
-        db.Friends.update({username:req.body.user},
+        db.Friends.update({username:req.session.kayttaja},
                           {$push:{'friends':personTemp._id}},
                           function(err,model){
             
-            //console.log("SEND REDIRECT!!!!!");
-            //Make a redirect to root context
-            //res.redirect(301,'/persons.html');
-            res.send("Added stuff");
+            if(err){
+                
+                res.status(500).json({message: 'Fail'});
+            }else{
+                
+                res.status(200).json({data: newData});
+            }
         });
      
     });

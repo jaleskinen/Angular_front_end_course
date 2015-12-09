@@ -5,7 +5,7 @@
 //name when you want to use this controller in some view
 //The $scope object is the glue between the view and controller. You use this object to transfer
 //data between the view and controller
-main_module.controller('controllerLogin', function ($scope, loginFactory, $location) {
+main_module.controller('controllerLogin', function ($scope, loginFactory, $location, Flash) {
     
     //var user = $scope.user;
     //$scope.pass = "halituli";
@@ -30,8 +30,7 @@ main_module.controller('controllerLogin', function ($scope, loginFactory, $locat
             
         }, function (data) {
             console.log('Login Error');
-            $('.status').text('Wrong username or password!');
-            console.log('bool: ' + $scope.bool);
+            Flash.create('danger', 'Wrong Username or Password! Please try again.!', 'custom-class');
         });
     };
     
@@ -48,11 +47,11 @@ main_module.controller('controllerLogin', function ($scope, loginFactory, $locat
         //wait the response from server
         waitPromise.then(function succ(data) {
             console.log('Register status was ok');
-            $('.status').text('Registration OK!');
+            Flash.create('success', 'New user registrated', 'custom-class');
             
         }, function err(data) {
             console.log('Register Error:' + data.status);
-            $('.status').text('Registration Error!');
+            Flash.create('danger', 'Username already in use!', 'custom-class');
         });
     };
 });

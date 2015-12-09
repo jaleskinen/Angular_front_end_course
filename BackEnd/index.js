@@ -17,7 +17,7 @@ var app = express();
 //bodyParser.json and bodyParser.urlencoded required for session object
 app.use(session({
     secret: uuid.v1(),
-    cookie: {maxAge: 600000}
+    cookie: {maxAge: 6000000}
 }));
 //Bodyparser json() middleware parses the json object
 //from HTTP POST request

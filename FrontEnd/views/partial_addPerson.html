@@ -1,0 +1,15 @@
+<div class="loginbody_container">
+    <!--<h1 class="about">Angular</h1>-->
+    <h2>Add New Friend for {{loginPerson}}</h2>
+    <form>   
+        <h4>Name</h4>
+        <input type="text" class="form-control text-left" style = "width:250px" required placeholder="Full name" ng-model="name"/>
+        <h4>Address</h4>
+        <input type="text"  class="form-control text-left" style = "width:250px" placeholder="Full address" ng-model="address" />
+        <h4>Age</h4>
+        <input type="number" class="form-control text-left" style = "width:80px" placeholder="Age" min="0" ng-model="age" />
+        <input id="add" type="button" class="btn btn-primary" value="Add" ng-click='addClicked()'/>
+        <input type="button" class="btn btn-primary" value="Home" ng-click='homeClicked()'/>    
+    </form>
+        <div class="flash-style" flash-message="2000"></div> 
+</div>

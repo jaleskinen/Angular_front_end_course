@@ -1,8 +1,8 @@
 <div class="loginbody_container">
       
-    <h1 class="pagetitle">Angular - {{loginPerson}}</h1>
+    <h1 class="pagetitle">Angular Friends for {{loginPerson}}</h1>
 
-    <table class="table table-bordered table-hover">
+    <table class="table table-bordered">
         <thead>
           <tr>
             <th>Name</th>
@@ -16,15 +16,17 @@
             <td>{{person.name}}</td>
             <td>{{person.address}}</td>
             <td>{{person.age}}</td>
-            <td><input type='button' class="btn btn-default btn-sm" value='Modify' ng-click='modifyClicked($index)'/></td>
+            <td><input type="button" class="btn btn-primary" value="Modify" ng-click='modifyPersonClicked(person._id)'/></td>
           </tr>
         </tbody>
     </table>
     
+    <div class="flash-style" flash-message="2000"></div> 
+    
     <input type="text" class="form-control" style = "width:250px" placeholder="Search by Name" ng-model="search"/>
-    <input type="button" class="btn btn-default" value="Search" ng-click='searchClicked()'/>
-    <input type="button" class="btn btn-default" value="Show all" ng-click='showAllClicked()'/><br><br>
-    <input type="button" class="btn btn-default" value="Add Person" ng-click='addPersonClicked()'>
-    <a href="/logout" class="btn btn-default">Logout</a>
+    <input type="button" class="btn btn-primary" value="Search" ng-click='searchClicked()'/>
+    <input type="button" class="btn btn-primary" value="Show all" ng-click='showAllClicked()'/><br><br>
+    <a href="#/addPerson" class="btn btn-primary">Add Person</a>
+    <a href="/logout" class="btn btn-primary">Logout</a>
 
 </div>
