@@ -1,7 +1,12 @@
 var mongoose = require("mongoose");
 
-mongoose.connect('mongodb://localhost:27017/oma',connectionStatus);
+//mongoose.connect('mongodb://localhost:27017/oma',connectionStatus);
+var db_name = oma;
+var mongodb_connection_string = 'mongodb://127.0.0.1:27017/' + db_name;
 
+if(process.env.OPENSHIFT_MONGODB_DB_URL){
+  mongodb_connection_string = process.env.OPENSHIFT_MONGODB_DB_URL + db_name;
+}
 /**
   *Connectuion callback for fail and ok cases
   */
