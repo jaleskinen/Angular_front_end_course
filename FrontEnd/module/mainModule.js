@@ -1,32 +1,61 @@
 //Here we create our main module. First argument is the name of the module, the second one
 //the '[] array' contains the dependencies to other angular modules
-var main_module = angular.module('main_module', ['ngRoute', 'ngResource', 'ngAnimate', 'flash']);
+var main_module = angular.module('main_module',['ngRoute','ngResource','flash']);
 
+//This function will check if user is logged in or not. 
+//This function is used in the rouer below in resolve attribute
+function loginRequired ($q, $resource, $location){
+    
+    //Create a promise
+    var deferred = $q.defer();
+    $resource('/islogged').query().$promise.then(function success(){
+        
+        //Mark the promise to be solved (or resolved)
+        deferred.resolve();
+        return deferred;
+        }, function fail(){
+        
+        //Mark promise to be failed
+        deferred.reject();
+        //Go back to root content
+        $location.path('/');
+        return deferred;
+    });
+}
 
 //Create basic configuration for our angular app.
 //Configuration includes USUALLY a router for our views.
 //The $routeProvider object comes from ngRoute module
-main_module.config(function ($routeProvider) {
+main_module.config(function($routeProvider){
     
-    $routeProvider.when('/', {
+    $routeProvider.when('/',{
         
-        templateUrl: 'partial_login.html',
-        controller: 'controllerLogin'
+        templateUrl:'partial_login.html',
+        controller:'controllerLogin',
         
-    }).when('/list', {
+    }).when('/list',{
         
-        templateUrl: 'partial_dataView.html',
-        controller: 'friendDataController'
+        templateUrl:'partial_dataView.html',
+        controller:'friendDataController',
+        resolve:{loginRequired:loginRequired}
         
-    }).when('/addPerson', {
+    }).when('/edit',{
         
-        templateUrl: 'partial_addPerson.html',
-        controller: 'addPersonController'
+        templateUrl:'partial_editView.html',
+        controller:'editController',
+        resolve:{loginRequired:loginRequired}
         
-    }).when('/modifyPerson', {
+    }).when('/delete',{
         
-        templateUrl: 'partial_modifyPerson.html',
-        controller: 'modifyController'
+        templateUrl:'partial_deleteView.html',
+        controller:'deleteController',
+        resolve:{loginRequired:loginRequired}
+        
+    }).when('/insert',{
+        
+        templateUrl:'partial_addView.html',
+        controller:'addController',
+        resolve:{loginRequired:loginRequired}
     });
     
 });

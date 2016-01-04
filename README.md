@@ -1,2 +1,2 @@
-# Angular_front_end_course
-Same as teacher repo
+# Angular_front_end
+Exampe of using angular template engine

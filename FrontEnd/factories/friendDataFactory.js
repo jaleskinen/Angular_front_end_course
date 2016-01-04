@@ -1,12 +1,10 @@
-main_module.factory('friendDataFactory', function ($resource) {
+main_module.factory('friendDataFactory',function($resource,$http){
     
     var factory = {};
-    
-    //In this array we cache the friends information
+    factory.selected_id = null;
+    //In this array we cache the friends information,
     //so that once stored in array we wont make any further request
     factory.friendsArray = [];
-    
-    factory.selected_id = null;
     
     factory.getFriendData = function(callbackFunc){
         
@@ -28,14 +26,6 @@ main_module.factory('friendDataFactory', function ($resource) {
             callbackFunc(factory.friendsArray);
         }
     }
-    
-    //Updates new data to back end
-    factory.insertData = function (data) {
-        
-        var resource = $resource('/persons', {}, {'post': {method: 'POST'}});
-        return resource.post(data).$promise;
-    };
-    
     //Updates the data to back end
     factory.updateData = function(data){
         
@@ -43,7 +33,6 @@ main_module.factory('friendDataFactory', function ($resource) {
         return resource.put(data).$promise;
     }
     
-    //Delete the data from back end
     factory.deleteData = function(data){
         $http.defaults.headers.common['content-type'] = 'application/json'; 
         var resource = $resource('/persons',{},{'delete':{method:'DELETE'}});
@@ -68,9 +57,19 @@ main_module.factory('friendDataFactory', function ($resource) {
         
     }
     
+    //Updates the data to back end
+    factory.insertData = function(data){
+        
+        var resource = $resource('/persons',{},{'post':{method:'POST'}});
+        return resource.post(data).$promise;
+    }
     
-    //Factory must always return an object!!!!
+    factory.search = function(term){
+        
+        var resource = $resource('/persons/search/',{name:term},{'get':{method:'GET'}});
+        return resource.query().$promise;
+    }
+    
     return factory;
     
-
 });

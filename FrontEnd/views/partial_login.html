@@ -1,20 +1,12 @@
 
-<!--<p class="error"></p>-->
-
-<div class="loginbody_container">
-    <h1 class="pagetitle">Login or Register to Angular App!</h1>
-    <form>
-        <!--ng-model directive is the way to tarnsfer data to controller -->
-        <input type="text" placeholder="username" class="form-control" ng-model="user">
-        <input type="password" placeholder="password" class="form-control" ng-model='pass'>
-        <input type="button" value="Login" class="btn btn-primary" ng-click='loginClicked()'>
-        <input type="button" value="Register" class="btn btn-primary" ng-click='registerClicked()' >
-
-        <!--bind the data from username textfield (use the variable 'user')-->
-    <!--    <p>{{user}}</p>-->
-    </form>
-    <br><br>
-
-    <div class="flash-style" flash-message="2000"></div> 
-    
-</div>
+<form class='loginForm'>
+    <h3>Login to friends app</h3>
+    <!--ng-model directive is the way to tarnsfer data to controller -->
+    <input class="form-control" type="text" placeholder="username" ng-model="user"><br/>
+    <input class="form-control" type="password" placeholder="password" ng-model='pass'><br/>
+    <input class="btn btn-default" type="button" value="Login" ng-click='loginClicked()'>
+    <input class="btn btn-default" type="button" value="Register" ng-click='registerClicked()'>
+    <!--bind the data from username textfield (use the variable 'user')-->
+    <p>{{user}}</p>
+</form>
+<div class="flash-style" flash-message="2000"></div> 

@@ -1,106 +1,48 @@
-/*use element selector to select all p elements for this style*/
-p{
-    color: red;
-    font-size: 22px;
+html,body{
+    
+    max-width: 100%;
+    width: 100%;
 }
 
-thead{
-    color: darkblue;
-    font-size: 18px;
-}
-
-.table {
-     border: 2.5px solid #000000;
-     border-color: black;
-}
-
-.table-bordered > thead > tr > th,
-.table-bordered > tbody > tr > th,
-.table-bordered > thead > tr > td,
-.table-bordered > tbody > tr > td {
-   border: 1.5px solid #000000;
-}
-
-.table td {
-   text-align: center;
-}
-
-.table th {
-   text-align: center;
-}
-
-.about{
-    font-size: 32px;
-    text-decoration: underline;
-    text-align: center;
-    color: blue;
-}
-
-tbody{
-    color: darkblue;
-    font-size: 14px;
-}
-
-h3{   
-    text-align: center;
-    text-decoration: underline;
-}
-
-h2{   
-    text-decoration: underline;  
-}
-
-.body_container
-{
-    font-size: 12px;
-    color: blue;
-    margin: 8px auto;
-    /*border-radius: 25px;*/
-    background: linear-gradient(to right, rgba(0,0,255,0.2), rgba(0,0,255,0.5));
+.loginForm{
+    
+    width: 400px;
+    margin: 30px auto;
+    border: 2px solid gray;
+    border-radius: 5px;
     padding: 20px;
+    background-color: lightblue;
 }
 
-input[type=text], input[type=password], input[type=number] {
-    text-align:center;
-    margin: 0 auto 1em auto;
+.table_container
+{
+    
+    border: 3px solid black;
+    border-radius: 5px;
     width: 70%;
-    padding: 5px;
-}
-
-.pagetitle{
-    font-size: 32px;
-    text-decoration: underline;
-    text-align: center;
-    color: darkblue;
-    padding: 18px;
-}
-
-
-.loginbody_container
-{
-    border-radius: 25px;
-    background: linear-gradient(to right, rgba(0,0,255,0.2), rgba(0,0,255,0.4));
-    padding: 20px;
-    text-align: center;
-}
-
-/* The starting CSS styles for the fading class animation */
-.fading.ng-enter {
-    transition: 3s;
-    opacity:0;
-}
-
-/* The finishing CSS styles for the fading class animation */
-.fading.ng-enter.ng-enter-active {
-    opacity:1;
+    margin: auto;
+    padding: 12px;
 }
 
 .flash-style{
-    text-align:center;
-    font-size: 18px;
-    margin: 0 auto 1em auto;
-    width: 70%;
-    padding: 5px;
+    
+    width: 30%;
+    margin: auto 0;
+    position: absolute;
+    top: 10%;
+    left: 450px;
+    
 }
+
+
+
+
+
+
+
+
+
+
+
 
 

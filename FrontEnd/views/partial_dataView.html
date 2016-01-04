@@ -1,32 +1,29 @@
-<div class="loginbody_container">
-      
-    <h1 class="pagetitle">Angular Friends for {{loginPerson}}</h1>
-
-    <table class="table table-bordered">
+<a href="/logout">Logout</a>
+<a href="#/delete">Delete Information</a>
+<a href="#/insert">Insert New Friend</a>
+<div class='table_container'>
+    <h1>Your friends...</h1>
+    <p>To edit information, click the row</p>
+    <p>Search persons...empty search will fetch all your friends</p>
+    <input type="search" class="form-control" value="Search" ng-model='search_term'/><br/>
+    <button class="btn btn-default" value="Search" ng-click='search()'>
+        <span class="glyphicon glyphicon-search"></span>
+        Search
+    </button>
+    <table class="table table-hover">
         <thead>
-          <tr>
-            <th>Name</th>
-            <th>Address</th>
-            <th>Age</th>
-            <th>Modify</th>
-          </tr>
+            <tr>
+                <th>Name</th>
+                <th>Address</th>
+                <th>Age</th>
+            </tr>
         </thead>
         <tbody>
-          <tr ng-repeat="person in friendData">
-            <td>{{person.name}}</td>
-            <td>{{person.address}}</td>
-            <td>{{person.age}}</td>
-            <td><input type="button" class="btn btn-primary" value="Modify" ng-click='modifyPersonClicked(person._id)'/></td>
-          </tr>
+            <tr ng-repeat='person in friendData' ng-click='rowCliked(person._id)'>
+                <td>{{person.name}}</td>
+                <td>{{person.address}}</td>
+                <td>{{person.age}}</td>
+            </tr>
         </tbody>
     </table>
-    
-    <div class="flash-style" flash-message="2000"></div> 
-    
-    <input type="text" class="form-control" style = "width:250px" placeholder="Search by Name" ng-model="search"/>
-    <input type="button" class="btn btn-primary" value="Search" ng-click='searchClicked()'/>
-    <input type="button" class="btn btn-primary" value="Show all" ng-click='showAllClicked()'/><br><br>
-    <a href="#/addPerson" class="btn btn-primary">Add Person</a>
-    <a href="/logout" class="btn btn-primary">Logout</a>
-
 </div>

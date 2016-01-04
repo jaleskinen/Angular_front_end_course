@@ -1,38 +1,33 @@
-main_module.controller('friendDataController', function ($scope, friendDataFactory, $location, $http) {
+main_module.controller('friendDataController',function($scope,friendDataFactory,$location){
     
     console.log('friendDataController loaded');
     
     friendDataFactory.getFriendData(dataCallback);
     
-    $scope.loginPerson = localStorage.username;
+    $scope.rowCliked = function(id){
+        
+        friendDataFactory.selected_id = id;
+        $location.path('/edit').replace();
+    }
     
-    function dataCallback(dataArray) {
+    function dataCallback(dataArray){
         
         $scope.friendData = dataArray;
     }
     
-    $scope.modifyPersonClicked = function(id){
-        console.log('modifyPersonClicked id ' + id);
-        friendDataFactory.selected_id = id;
-        $location.path('/modifyPerson').replace();
+        //This is called when logoutClicked
+    $scope.logoutClicked = function () {
+        console.log('logout Clicked');
+        window.location.href = "#/";
+        /*personFactory.logoutPerson();*/
+    };
+    
+    $scope.search = function(){
+        console.log('search pressed');
+        friendDataFactory.search($scope.search_term).then(function(data){
+            console.log(data);
+            $scope.friendData = data;
+            
+        });
     }
-    
-    //This is called when searchClicked
-    $scope.searchClicked = function () {
-        console.log('Search Clicked');
-        $http.get('http://localhost:3000/persons/name=' + $scope.search + '/username=' + localStorage.username)
-            .success(function (persons) {
-            console.log('Search success');
-                $scope.friendData = persons;
-                $scope.search = "";
-            });
-    };
-    
-    //This is called when showAllClicked, load all friend back to table
-    $scope.showAllClicked = function () {
-        console.log('Show All Clicked');
-        friendDataFactory.getFriendData(dataCallback);
-        $scope.search = "";
-    };
-    
 });

@@ -5,53 +5,50 @@
 //name when you want to use this controller in some view
 //The $scope object is the glue between the view and controller. You use this object to transfer
 //data between the view and controller
-main_module.controller('controllerLogin', function ($scope, loginFactory, $location, Flash) {
-    
-    //var user = $scope.user;
-    //$scope.pass = "halituli";
+main_module.controller('controllerLogin',function($scope,loginFactory,$location,Flash){
     
     //This is called when login button is pressed in partial_login.html
-    $scope.loginClicked = function () {
+    $scope.loginClicked = function(){
         
         console.log('login was pressed');
         
         var temp = {
-            username: $scope.user,
-            password: $scope.pass
-        };
+            username:$scope.user,
+            password:$scope.pass
+        }
         
         var waitPromise = loginFactory.startLogin(temp);
-        //wait the response from server
-        waitPromise.then(function (data) {
-            console.log('Login OK');
-            //Code inside this block will be called when success responce
-            //from server receives
+        
+        //Wait the response from server
+        waitPromise.then(function(data){
             $location.path('/list');
-            
-        }, function (data) {
-            console.log('Login Error');
-            Flash.create('danger', 'Wrong Username or Password! Please try again.!', 'custom-class');
+            //code inside this block will be called when success response
+            //from server receives
+        },function(data){
+            Flash.create('danger', 'Wrong user name or password given', 'custom-class');            
         });
-    };
+    }
     
-    $scope.registerClicked = function () {
+    $scope.registerClicked = function(){
         
-        console.log('register was pressed');
-        var temp = {
-            username: $scope.user,
-            password: $scope.pass
-        };
+         var temp = {
+            username:$scope.user,
+            password:$scope.pass
+        }
+         
+        var response = loginFactory.startRegister(temp);
         
-        var waitPromise = loginFactory.startRegister(temp);
-        
-        //wait the response from server
-        waitPromise.then(function succ(data) {
-            console.log('Register status was ok');
-            Flash.create('success', 'New user registrated', 'custom-class');
-            
-        }, function err(data) {
-            console.log('Register Error:' + data.status);
-            Flash.create('danger', 'Username already in use!', 'custom-class');
-        });
-    };
+        response.then(success,error)
+    }
+    
+    function success(data){
+    
+        Flash.create('success', 'New user added!', 'custom-class'); 
+    }
+
+    function error(data){
+
+        Flash.create('danger', 'Username already in use!', 'custom-class');
+    }
 });
+
