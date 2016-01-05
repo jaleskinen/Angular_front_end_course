@@ -6,7 +6,7 @@ var main_module = angular.module('main_module',['ngRoute','ngResource','flash'])
 //This function is used in the rouer below in resolve attribute
 function loginRequired ($q, $resource, $location){
     
-    //Create a promise
+    //Create a promise object
     var deferred = $q.defer();
     $resource('/islogged').query().$promise.then(function success(){
         
