@@ -40,7 +40,7 @@ app.set('ip', process.env.OPENSHIFT_NODEJS_IP || "127.0.0.1");
 
 app.use(session({
     secret: uuid.v1(),
-    cookie: {maxAge: 9000000} //set to null => cookie deleted after browser shut down
+    cookie: {maxAge: null} //set to null => cookie deleted after browser shut down
 }));
 //Bodyparser json() middleware parses the json object
 //from HTTP POST request

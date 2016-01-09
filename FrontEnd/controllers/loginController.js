@@ -33,6 +33,7 @@ main_module.controller('controllerLogin',function($scope,loginFactory,$location,
     
     $scope.registerClicked = function(){
         
+        console.log('register was pressed');
          var temp = {
             username:$scope.user,
             password:$scope.pass

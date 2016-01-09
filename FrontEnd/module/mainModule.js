@@ -9,6 +9,14 @@ function loginRequired ($q, $resource, $location, $http){
     //Create a promise object
     var deferred = $q.defer();
     $http.defaults.headers.common['x-access-token'] = sessionStorage['token'];
+    
+/*    if (!$http.defaults.headers.get) {
+        $http.defaults.headers.get = {};    
+    } 
+    $http.defaults.headers.get['If-Modified-Since'] = 'Mon, 26 Jul 1997 05:00:00 GMT';
+
+    $http.defaults.headers.get['Cache-Control'] = 'no-cache';*/
+    
     $resource('/islogged').query().$promise.then(function success(){
         
         //Mark the promise to be solved (or resolved)

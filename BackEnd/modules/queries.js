@@ -52,6 +52,8 @@ exports.saveNewPerson = function(req,res){
 }
 
 exports.deletePerson = function(req,res){
+    console.log('db.deletePerson req.body.id: ' + req.body.id);
+    console.log('db.deletePerson req.query.forDelete: ' + req.query.forDelete);
     var toDelete = [];
     if(req.query.forDelete instanceof Array)
         toDelete = req.query.forDelete;
@@ -59,7 +61,7 @@ exports.deletePerson = function(req,res){
         
        toDelete.push(req.query.forDelete); 
     }
-    console.log(toDelete);
+    console.log('db.deletePerson toDelete: ' + toDelete);
     db.Person.remove({_id:{$in:toDelete}},function(err,data){
         
         if(err){
