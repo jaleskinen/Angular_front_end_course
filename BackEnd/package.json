@@ -1,5 +1,5 @@
 {
-  "name": "html5view",
+  "name": "Angular_front_end_course",
   "version": "0.0.1",
   "description": "RESTful server for person app",
   "scripts": {
@@ -8,20 +8,21 @@
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/maukka76/HTML5View.git"
+    "url": "git+https://github.com/jaleskinen/Angular_front_end_course.git"
   },
-  "author": "Markus Veijola",
+  "author": "Jarmo Leskinen",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/maukka76/HTML5View/issues"
+    "url": "https://github.com/jaleskinen/Angular_front_end_course.git"
   },
-  "homepage": "https://github.com/maukka76/HTML5View#readme",
+  "homepage": "https://github.com/jaleskinen/Angular_front_end_course.git",
   "dependencies": {
     "body-parser": "^1.14.1",
     "express": "^4.13.3",
     "express-session": "^1.12.1",
     "jsonwebtoken": "^5.5.4",
     "mongoose": "^4.2.3",
+    "mysql": "^2.10.0",
     "uuid": "^2.0.1"
   }
 }
