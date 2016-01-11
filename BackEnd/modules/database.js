@@ -21,7 +21,7 @@ function connectionStatus(err,ok){
         console.log(err.message);
     }else{
         
-        console.log("We are connected!");
+        console.log("We are connected to MongoDB!");
     }
 }
 

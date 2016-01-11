@@ -10,6 +10,7 @@ var database = require('./modules/database');
 var queries = require('./modules/queries');
 var person = require('./modules/person');
 var user = require('./modules/user');
+var mysql_module = require('./modules/mysql_module');
 
 //This is used for createing a secret key value
 //for our session cookie
