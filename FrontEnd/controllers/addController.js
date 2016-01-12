@@ -1,4 +1,4 @@
-main_module.controller('addController',function($scope,friendDataFactory,Flash){
+main_module.controller('addController',function($scope,friendDataFactory,Flash, $location){
     
     $scope.name = "";
     $scope.address = "";
@@ -25,6 +25,8 @@ main_module.controller('addController',function($scope,friendDataFactory,Flash){
             $scope.address = "";
             $scope.age = "";
             $('#save').attr("disabled", false);
+            friendDataFactory.friendsArray = [];
+            $location.path('/list').replace();
         },function(error){
             $('#save').attr("disabled", false);
             Flash.create('warning', 'Failed to add friend!', 'custom-class');

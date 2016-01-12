@@ -24,6 +24,7 @@ main_module.controller('editController',function($scope,friendDataFactory,$locat
     function success(){
         friendDataFactory.friendsArray = [];
         $location.path('/list').replace();
+        Flash.create('success', 'Data updated!', 'custom-class'); 
     }
     
     function error(data){

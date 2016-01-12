@@ -14,7 +14,8 @@ var router = express.Router();
 
 router.get('/', function (req, res) {
     
-    query.getFriendsByUsername(req, res);
+    //query.getFriendsByUsername(req, res);
+    mysql.getFriendsForUserByUsername(req, res);
 });
 
 //This router handles a request to uri
@@ -30,7 +31,8 @@ router.post('/login', function (req, res) {
 //localhost:3000/friends/register
 router.post('/register', function (req, res) {
     
-    query.registerFriend(req, res);
+    //query.registerFriend(req, res);
+    mysql.registerNewUser(req, res);
 });
 
 module.exports = router;
