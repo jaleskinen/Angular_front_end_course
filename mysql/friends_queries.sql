@@ -24,19 +24,22 @@ CALL getAllUsers();
 CALL getLoginInfo("jarmo","jarmo");
 
 /*Call procedure. This will get friends by username from friend table*/
-CALL getFriendsByUsername("testi");
+CALL getFriendsByUsername("jarmo");
 
 /*Call procedure. This will get friends by user_id from friend table*/
 CALL getFriendsByUserId(3);
 
 /*Call procedure. This will get friends by user_id from friend table*/
-CALL registerUser("aaa","aaa");
+CALL registerUser("aaaa","aaaa");
 
 /*Call procedure. This will add new friends*/
-CALL saveNewFriend("Friend 2","Friendstreet 2", "22", "jarmo");
+CALL addNewFriend("Friend 3","Friendstreet 3", "33", "jarmo");
 
 /*Call procedure. This will add new friends*/
 CALL getUserId("aaa");
 
 /*Call procedure. This will update friends*/
-CALL updateFriend("Friend 2","Friendstreet 2", "22", 2);
+CALL updateFriend("Friend 2","Friendstreet 2", "222", 1);
+
+/*Call procedure. This will delete friends*/
+CALL deleteFriends(7);

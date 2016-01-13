@@ -12,8 +12,9 @@ router.get('/',function(req,res){
 
 
 router.get('/search',function(req,res){
-    console.log('Router for query called');
-    db.findPersonsByName(req,res);
+    
+    //db.findPersonsByName(req,res);
+    mysql.findFriends(req, res);
 });
 
 //Handle POST requets for /persons context

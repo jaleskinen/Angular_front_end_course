@@ -23,7 +23,7 @@ connection.connect(function (err) {
     }
 });
 
-//Call this function to check username and password from mysql database
+/*//Call this function to check username and password from mysql database
 exports.loginMysql = function (req, res) {
     
     connection.query('SELECT * from user WHERE username = ? and pass = ?', [req.body.username, req.body.password], function (error, results, fields) {
@@ -33,8 +33,9 @@ exports.loginMysql = function (req, res) {
         console.log(fields);
     });
     
-};
+};*/
 
+//Call this function to check username and password from mysql database
 exports.loginMysqlProc = function (req, res) {
     connection.query('CALL getLoginInfo (?, ?)', [req.body.username, req.body.password], function (error, results, fields) {
         
@@ -130,32 +131,49 @@ exports.updateFriend = function (req, res) {
 };
 
 exports.deleteFriends = function (req, res) {
-
+    var i;
     var toDelete = [];
-    if(req.query.forDelete instanceof Array)
-        toDelete = req.query.forDelete;
-    else{
+    if (req.query.forDelete instanceof Array) {
         
-       toDelete.push(req.query.forDelete); 
+        toDelete = req.query.forDelete;
+    } else {
+        
+        toDelete.push(req.query.forDelete);
     }
 
     var query = "";
     
-    for(var i = 0; i < toDelete.length; i++){
+    for (i = 0; i < toDelete.length; i++) {
         
         query += "CALL deleteFriends(" +  toDelete[i] + ");";
         //query += "DELETE FROM friend WHERE _id=" + toDelete[i] + ";";
     }
     
     //console.log('delete query: ' + query);
-    connection.query(query,[],function(error,results,fields){
+    connection.query(query, [], function (error, results, fields) {
         
-        if(error){
+        if (error) {
      
-            res.status(500).send({message:error});
-        }else{
-            res.status(200).send({message:'Delete success'});
+            res.status(500).send({message: error});
+        } else {
+            res.status(200).send({message: 'Delete success'});
         }
     });
-}
+};
 
+exports.findFriends = function (req, res) {
+    var name = req.query.name + "%";
+    console.log('req.query.name: ' + req.query.name);
+    connection.query('CALL findFriends(?, ?)', [req.query.name, req.session.kayttaja], function (error, results, fields) {
+        
+        //console.log(results);
+        if (results.length > 0) {
+            
+            var data = results[0];
+            res.send(data);
+        } else {
+            
+            res.send([]);
+        }
+    });
+};
