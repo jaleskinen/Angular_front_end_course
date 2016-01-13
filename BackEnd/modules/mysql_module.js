@@ -7,7 +7,7 @@ var connection = mysql.createConnection({
     
     host: 'localhost',
     user: 'root',
-    password: 'root',
+    password: 'Ja11my22',
     database: 'friends_schema',
     multipleStatements: true
 });
@@ -100,7 +100,7 @@ exports.addNewFriend = function (req, res) {
     
     console.log('req.body.name, req.body.address, req.body.age, req.session.kayttaja: ' + req.body.name + ', ' + req.body.address + ', ' + req.body.age + ',' + req.session.kayttaja);
 
-    connection.query('CALL saveNewFriend(?, ?, ?, ?)', [req.body.name, req.body.address, req.body.age, req.session.kayttaja], function (error, results, fields) {
+    connection.query('CALL addNewFriend(?, ?, ?, ?)', [req.body.name, req.body.address, req.body.age, req.session.kayttaja], function (error, results, fields) {
      
         if (error) {
 
@@ -115,8 +115,8 @@ exports.addNewFriend = function (req, res) {
 //This method updates one person info
 exports.updateFriend = function (req, res) {
     
-    console.log('updateFriend: ' + req.body.name + ',' + req.body.address + ',' + req.body.age + ',' + req.body.id);
-    
+/*    console.log('updateFriend: ' + req.body.name + ',' + req.body.address + ',' + req.body.age + ',' + req.body.id);
+    */
     connection.query('CALL updateFriend(?, ?, ?, ?)', [req.body.name, req.body.address, req.body.age, req.body.id], function (error, results, fields) {
      
         if (error) {
@@ -129,5 +129,33 @@ exports.updateFriend = function (req, res) {
     });
 };
 
+exports.deleteFriends = function (req, res) {
 
+    var toDelete = [];
+    if(req.query.forDelete instanceof Array)
+        toDelete = req.query.forDelete;
+    else{
+        
+       toDelete.push(req.query.forDelete); 
+    }
+
+    var query = "";
+    
+    for(var i = 0; i < toDelete.length; i++){
+        
+        query += "CALL deleteFriends(" +  toDelete[i] + ");";
+        //query += "DELETE FROM friend WHERE _id=" + toDelete[i] + ";";
+    }
+    
+    //console.log('delete query: ' + query);
+    connection.query(query,[],function(error,results,fields){
+        
+        if(error){
+     
+            res.status(500).send({message:error});
+        }else{
+            res.status(200).send({message:'Delete success'});
+        }
+    });
+}
 
