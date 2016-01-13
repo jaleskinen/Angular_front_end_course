@@ -4,8 +4,8 @@
     <!--ng-model directive is the way to tarnsfer data to controller -->
     <input class="form-control" type="text" placeholder="username" ng-model="user"><br/>
     <input class="form-control" type="password" placeholder="password" ng-model='pass'><br/>
-    <input class="btn btn-default" type="button" value="Login" ng-click='loginClicked()'>
-    <input class="btn btn-default" type="button" value="Register" ng-click='registerClicked()'>
+    <input type="submit" value="Login" class="btn btn-primary" ng-click='loginClicked()'>
+    <input class="btn btn-default" type="submit" value="Register" ng-click='registerClicked()'>
     <!--bind the data from username textfield (use the variable 'user')-->
 <!--    <p>{{user}}</p>-->
 </form>
