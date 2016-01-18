@@ -164,7 +164,13 @@ exports.deleteFriends = function (req, res) {
 exports.findFriends = function (req, res) {
     var name = req.query.name ;
     console.log('req.query.name: ' + req.query.name);
-/*    connection.query('CALL findFriends(?, ?)', [req.query.name, req.session.kayttaja], function (error, results, fields) {*/
+/*    connection.query('CALL findFriends(?, ?)', [req.query.name, req.session.kayttaja], function (error, results, fields) {
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `findFriends`(in find varchar(255), in find_user varchar(255))
+BEGIN
+	SELECT * FROM friend WHERE name LIKE CONCAT('%', find, '%') and user_id = (SELECT user_id FROM user WHERE username = find_user);
+END
+*/
     connection.query('SELECT * FROM friend WHERE name LIKE ?',[name], function(error,results,fields){
         
         //console.log(results);
