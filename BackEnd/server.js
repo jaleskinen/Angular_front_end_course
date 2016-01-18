@@ -60,6 +60,9 @@ app.use('/FrontEnd/factories', express.static(path.join(__dirname, '../FrontEnd/
 
 app.use('/FrontEnd/fonts', express.static(path.join(__dirname, '../FrontEnd/fonts')));
 
+//Take my own directives to use
+app.use('/FrontEnd/directives', express.static(path.join(__dirname, '../FrontEnd/directives')));
+
 app.use('/friends', user);
 
 app.get('/logout', function (req, res) {

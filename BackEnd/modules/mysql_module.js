@@ -7,7 +7,7 @@ var connection = mysql.createConnection({
     
     host: 'localhost',
     user: 'root',
-    password: 'Ja11my22',
+    password: 'root',
     database: 'friends_schema',
     multipleStatements: true
 });
@@ -162,17 +162,19 @@ exports.deleteFriends = function (req, res) {
 };
 
 exports.findFriends = function (req, res) {
-    var name = req.query.name + "%";
+    var name = req.query.name ;
     console.log('req.query.name: ' + req.query.name);
-    connection.query('CALL findFriends(?, ?)', [req.query.name, req.session.kayttaja], function (error, results, fields) {
+/*    connection.query('CALL findFriends(?, ?)', [req.query.name, req.session.kayttaja], function (error, results, fields) {*/
+    connection.query('SELECT * FROM friend WHERE name LIKE ?',[name], function(error,results,fields){
         
         //console.log(results);
         if (results.length > 0) {
             
             var data = results[0];
-            res.send(data);
+            console.log(data);
+            res.send([data]);
         } else {
-            
+            console.log('results.length = 0');
             res.send([]);
         }
     });

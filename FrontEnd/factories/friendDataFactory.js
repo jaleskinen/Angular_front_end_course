@@ -70,6 +70,7 @@ main_module.factory('friendDataFactory',function($resource,$http){
     factory.search = function(term){
         
         var resource = $resource('/persons/search/',{name:term},{'get':{method:'GET'}});
+        console.log('factory.search');
         return resource.query().$promise;
     }
     

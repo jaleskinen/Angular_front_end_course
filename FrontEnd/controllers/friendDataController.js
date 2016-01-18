@@ -4,6 +4,8 @@ main_module.controller('friendDataController',function($scope,friendDataFactory,
     
     friendDataFactory.getFriendData(dataCallback);
     
+    $scope.name = "Jarmo Leskinen";
+    
     $scope.rowCliked = function(id){
         
         friendDataFactory.selected_id = id;
@@ -23,11 +25,13 @@ main_module.controller('friendDataController',function($scope,friendDataFactory,
     };
     
     $scope.search = function(){
-        console.log('search pressed');
         friendDataFactory.search($scope.search_term).then(function(data){
-            console.log(data);
+            console.log('data received: ' + data);
             $scope.friendData = data;
-            
         });
     }
+    
+     $scope.showAll = function () {
+        location.reload();
+    };
 });
