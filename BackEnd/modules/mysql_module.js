@@ -7,7 +7,7 @@ var connection = mysql.createConnection({
     
     host: 'localhost',
     user: 'root',
-    password: 'root',
+    password: 'Ja11my22',
     database: 'friends_schema',
     multipleStatements: true
 });

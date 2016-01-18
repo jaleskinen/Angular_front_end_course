@@ -7,7 +7,7 @@ main_module.factory('friendDataFactory',function($resource,$http){
     factory.friendsArray = [];
     
     factory.getFriendData = function(callbackFunc){
-        
+        console.log('factory.friendsArray.length: ' + factory.friendsArray.length);
         if(factory.friendsArray.length === 0){
             //Set your headers in request like this
             $http.defaults.headers.common['x-access-token'] = sessionStorage['token'];
