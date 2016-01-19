@@ -64,13 +64,14 @@ main_module.directive('ofExample', function () {
         
             jQuery(document).ready(function($) {
               $.ajax({
-              url : "http://api.wunderground.com/api/9f4c9f5718842fd6/geolookup/conditions/q/FI/oulu.json",
+              url : "http://api.wunderground.com/api/9f4c9f5718842fd6/geolookup/conditions/q/FI/muhos.json",
               dataType : "jsonp",
               success : function(parsed_json) {
                   var location = parsed_json['location']['city'];
                   var temp_c = parsed_json['current_observation']['temp_c'];
 
                   $scope.temperature = temp_c;
+                  $scope.city = location;
                   $scope.$apply();      
                   console.log('$scope.temperature: ' + $scope.temperature);
                       //alert("Current temperature in " + location + " is: " + temp_c);
