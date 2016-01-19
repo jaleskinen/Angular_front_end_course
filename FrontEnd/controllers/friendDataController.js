@@ -6,6 +6,7 @@ main_module.controller('friendDataController',function($scope,friendDataFactory,
     
     $scope.name = "Jarmo Leskinen";
     
+    
     $scope.rowCliked = function(id){
         
         friendDataFactory.selected_id = id;

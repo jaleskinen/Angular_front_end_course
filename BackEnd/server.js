@@ -24,12 +24,12 @@ exports.secret = secret;
 //This is used to create a session object for client
 var session = require('express-session');
 
-var options = {
+/*var options = {
     key: fs.readFileSync('server.key'),
     cert: fs.readFileSync('server.crt'),
     requestCert: false,
     rejectUnauthorized: false
-};
+};*/
 
 var app = express();
 
@@ -62,6 +62,7 @@ app.use('/FrontEnd/fonts', express.static(path.join(__dirname, '../FrontEnd/font
 
 //Take my own directives to use
 app.use('/FrontEnd/directives', express.static(path.join(__dirname, '../FrontEnd/directives')));
+app.use('/FrontEnd/views', express.static(path.join(__dirname, '../FrontEnd/views')));
 
 app.use('/friends', user);
 
@@ -114,8 +115,8 @@ app.get('/islogged', function (req, res) {
     }
 });
 
-https.createServer(options, app).listen(app.get('port'), app.get('ip'), function () {
+/*https.createServer(options, app).listen(app.get('port'), app.get('ip'), function () {
     console.log("Express server started");
-});
+});*/
 
-/*app.listen(3000);*/
+app.listen(3000);

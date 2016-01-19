@@ -1,4 +1,4 @@
-main_module.factory('friendDataFactory',function($resource,$http){
+main_module.factory('friendDataFactory',function($resource,$http, $http){
     
     var factory = {};
     factory.selected_id = null;
