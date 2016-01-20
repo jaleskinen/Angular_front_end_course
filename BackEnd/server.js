@@ -24,12 +24,12 @@ exports.secret = secret;
 //This is used to create a session object for client
 var session = require('express-session');
 
-/*var options = {
+var options = {
     key: fs.readFileSync('server.key'),
     cert: fs.readFileSync('server.crt'),
     requestCert: false,
     rejectUnauthorized: false
-};*/
+};
 
 var app = express();
 
@@ -115,8 +115,17 @@ app.get('/islogged', function (req, res) {
     }
 });
 
-/*https.createServer(options, app).listen(app.get('port'), app.get('ip'), function () {
+https.createServer(options, app).listen(app.get('port'), app.get('ip'), function () {
     console.log("Express server started");
-});*/
+});
 
-app.listen(3000);
+//Server side socket. Note there is only one socket in server
+//that accepts ALL the client cnnections
+var io = require('socket.io').listen(https);
+
+//listen "connection" message from client
+io.on('connection', function(socket){
+  console.log('a user connected');
+});
+
+/*app.listen(3000);*/

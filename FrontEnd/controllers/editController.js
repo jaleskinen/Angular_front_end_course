@@ -8,6 +8,11 @@ main_module.controller('editController',function($scope,friendDataFactory,$locat
     $scope.address = selectedFriend.address;
     $scope.age = selectedFriend.age;
     
+    function dataCallback(dataArray){
+        
+        $scope.friendData = dataArray;
+    }
+    
     $scope.savePerson = function(){
         
         var temp = {

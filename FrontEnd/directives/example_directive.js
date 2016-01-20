@@ -43,28 +43,28 @@ main_module.directive('ofExample', function () {
     directive.compile = function (elem, attrs) {
         
         //Use JQuery to set background for our directive element
-        $(elem).css('background-color', 'lightgrey');
+        //$(elem).css('background-color', 'lightgrey');
         
         //Compile must always return link function
         //link function is called when component is rendered
         //on browser window
         return function link(scope, elem, attrs) {
             
-            console.log('scope.name: ' + scope.name);
+            console.log('scope.name: ' + scope.names);
             console.log('scope.users:' + scope.users);
             
         };
-    };*/
-    
+    };
+    */
     //You can also defien own controller for your directive
     //
-    directive.controller = function ($scope, $http) {
+   /* directive.controller = function ($scope, $http) {
         
         //console.log('directive controller activated: ' + $scope.name);
         
             jQuery(document).ready(function($) {
               $.ajax({
-              url : "http://api.wunderground.com/api/9f4c9f5718842fd6/geolookup/conditions/q/FI/muhos.json",
+              url : "http://api.wunderground.com/api/9f4c9f5718842fd6/geolookup/conditions/q/FI/oulu.json",
               dataType : "jsonp",
               success : function(parsed_json) {
                   var location = parsed_json['location']['city'];
@@ -79,7 +79,7 @@ main_module.directive('ofExample', function () {
               });
             });
   
-    };
+    };*/
     
     //Define the template code
     directive.templateUrl = "/FrontEnd/directives/content.html";

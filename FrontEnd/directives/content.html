@@ -1,5 +1,20 @@
 <h1>This is my Directive by {{names}}</h1>
-<u ng-repeat="user in users">
+
+<!--<u ng-repeat="user in users">
     <li>{{user.name}}</li>
-</u><br>
+</u><br>-->
+
+<h4>Names</h4>
+<select ng-model ="User">
+    <option ng-repeat="user in users" >
+       {{user.name}}
+    </option>
+</select>
+<h4>Ages</h4>
+<select ng-model ="User">
+    <option ng-repeat="user in users" >
+       {{user.age}}
+    </option>
+</select>
+<br><br>
 <p>Temperature {{city}}: {{temperature}} &#176C</p>
